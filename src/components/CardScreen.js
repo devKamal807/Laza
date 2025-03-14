@@ -1,6 +1,5 @@
 import {
   Dimensions,
-  FlatList,
   Image,
   PixelRatio,
   SafeAreaView,
@@ -49,7 +48,8 @@ export default function CardScreen() {
         <Image source={require('../assets/cards/cardone.png')} />
         <Image source={require('../assets/cards/cardtwo.png')} />
       </View>
-      <TouchableOpacity style={styles.button} activeOpacity={0.7}>
+      <TouchableOpacity style={styles.button} activeOpacity={0.7}
+      onPress={()=>{navigation.navigate('NewCard');}}>
         <Image
           source={require('../assets/cards/pluss.png')}
           style={styles.icon}
@@ -67,9 +67,6 @@ export default function CardScreen() {
             style={styles.input}
           />
         </View>
-
-        
-
         <View style={styles.phonecontainer}>
           <Text style={styles.label}>Card Number</Text>
           <TextInput

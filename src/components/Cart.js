@@ -119,7 +119,6 @@ export default function Cart() {
       <View style={styles.headContainer}>
         <Text style={styles.headTxt}>Cart</Text>
       </View>
-        
       <View>
         <FlatList
           data={cartItems}
@@ -129,7 +128,7 @@ export default function Cart() {
       </View>
       <ScrollView>
       <View style={styles.addressContainer}>
-        <TouchableOpacity style={styles.addressContainerBtn} onPress={()=>{navigation.navigate('AddAddress')}}>
+        <TouchableOpacity style={styles.addressContainerBtn} onPress={()=>{navigation.navigate('AddAddress');}}>
           <Text style={styles.addresstxt}>Delivery Address</Text>
           <Image source={images.rightArrow} style={styles.rghtarrow} />
         </TouchableOpacity>
@@ -159,7 +158,7 @@ export default function Cart() {
         </View>
       </View>
       <View style={styles.payhead}>
-        <TouchableOpacity style={styles.payheadbtn} onPress={()=>{navigation.navigate('CardScreen')}}>
+        <TouchableOpacity style={styles.payheadbtn} onPress={()=>{navigation.navigate('CardScreen');}}>
           <Text style={styles.payheadtxt}>Payment Method</Text>
           <Image source={images.rightArrow} style={styles.payrghtarrow} />
         </TouchableOpacity>
@@ -203,6 +202,7 @@ export default function Cart() {
       <View style={styles.crtBtncontainer}>
               <TouchableOpacity
                 style={styles.crtbtn}
+                onPress={()=>{navigation.navigate("OrderConfirm")}}
                 >
                 <Text style={styles.crtbtntxt}>Checkout</Text>
               </TouchableOpacity>
@@ -400,12 +400,11 @@ const styles = StyleSheet.create({
     opacity: 0.6,
   },
   visacheckcontainer:{
-    marginTop: height * 0.015
+    marginTop: height * 0.015,
   },
   bottomcontainer:{
     width:'90%',
     alignSelf:'center',
-    
   },
   subtotalcontainer:{
     // flex:1,

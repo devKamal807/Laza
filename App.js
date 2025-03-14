@@ -20,6 +20,8 @@ import ReviewScreen from './src/components/ReviewScreen';
 import AddReview from './src/screens/AddReview';
 import AddAddress from './src/components/AddAddress';
 import CardScreen from './src/components/CardScreen';
+import NewCard from './src/components/NewCard';
+import OrderConfirm from './src/components/OrderConfirm';
 
 
 
@@ -27,7 +29,6 @@ const Stack = createNativeStackNavigator();
 
 export default function App() {
   return (
-    
     <NavigationContainer>
       <Stack.Navigator initialRouteName="Splash" screenOptions={{headerShown:false}}>
         <Stack.Screen name="Splash" component={Splash}/>
@@ -47,6 +48,8 @@ export default function App() {
         <Stack.Screen name="AddReview" component={AddReview}/>
         <Stack.Screen name="AddAddress" component={AddAddress}/>
         <Stack.Screen name="CardScreen" component={CardScreen}/>
+        <Stack.Screen name="NewCard" component={NewCard}/>
+        <Stack.Screen name="OrderConfirm" component={OrderConfirm}/>
       </Stack.Navigator>
     </NavigationContainer>
   );
