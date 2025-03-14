@@ -18,6 +18,8 @@ import Payment from './src/components/Payment';
 import WishList from './src/components/WishList';
 import ReviewScreen from './src/components/ReviewScreen';
 import AddReview from './src/screens/AddReview';
+import AddAddress from './src/components/AddAddress';
+import CardScreen from './src/components/CardScreen';
 
 
 
@@ -43,6 +45,8 @@ export default function App() {
         <Stack.Screen name="ProductView" component={ProductView}/>
         <Stack.Screen name="ReviewScreen" component={ReviewScreen}/>
         <Stack.Screen name="AddReview" component={AddReview}/>
+        <Stack.Screen name="AddAddress" component={AddAddress}/>
+        <Stack.Screen name="CardScreen" component={CardScreen}/>
       </Stack.Navigator>
     </NavigationContainer>
   );
