@@ -55,7 +55,7 @@ export default function ProductView() {
           style={styles.bgimage}>
           <View style={styles.backwraper}>
             <TouchableOpacity
-              onPress={() => navigation.navigate('NavigationTab')}>
+              onPress={() => navigation.goBack()}>
               <Image
                 source={require('../assets/images/Back.png')}
                 style={styles.imgbtn}
@@ -204,13 +204,13 @@ const styles = StyleSheet.create({
   backwraper: {
     flexDirection: 'row',
     marginTop: height * 0.05,
-    marginHorizontal: width * 0.04,
+    marginHorizontal: width * 0.05,
     justifyContent: 'space-between',
   },
   imgbtn: {
-    width: width * 0.12,
-    height: width * 0.12,
-    resizeMode: 'contain',
+    width: width * 0.08,
+    height: width * 0.08,
+    resizeMode:'contain'
   },
   nikelogo: {
     width: width * 0.3,

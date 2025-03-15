@@ -11,7 +11,7 @@ import {
   TouchableOpacity,
   View,
 } from 'react-native';
-import React from 'react';
+import React, { useState } from 'react';
 import {useNavigation} from '@react-navigation/native';
 
 const {width, height} = Dimensions.get('window');
@@ -69,24 +69,36 @@ const product = [
   },
 ];
 
-export default function WishList() {
+export default function BrandScreen({route}) {
   const navigation = useNavigation();
+
+  const {name} = route.params || {};
+
+   const [likedProducts, setLikedProducts] = useState([]);
+  
+    const toggleLike = id => {
+      setLikedProducts(prevLiked =>
+        prevLiked.includes(id)
+          ? prevLiked.filter(item => item !== id)
+          : [...prevLiked, id]
+      );
+    };
+
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.topcontainer}>
         <View style={styles.backContainer}>
           <TouchableOpacity
             onPress={() => navigation.goBack()}
-            accessible={true}
             accessibilityLabel="Go back">
             <Image
               source={require('../assets/images/Back.png')}
-              style={styles.backImage}
+              style={styles.imgbtn}
             />
           </TouchableOpacity>
         </View>
         <View style={styles.headContainer}>
-          <Text style={styles.headtxt}>Wishlist</Text>
+          {name && <Text style={styles.brandname}>{name}</Text>}
         </View>
         <View style={styles.cartcontainer}>
           <Pressable
@@ -95,59 +107,56 @@ export default function WishList() {
             }}>
             <Image
               source={require('../assets/images/Cart.png')}
-              style={styles.backImage}
+              style={styles.imgbtn}
             />
           </Pressable>
         </View>
       </View>
-
       <View style={styles.available}>
         <View>
-          <Text style={styles.itmtxt}>365 Items</Text>
-          <Text style={styles.avltxt}>Available in stock</Text>
+            <Text style={styles.itmtxt}>365 Items</Text>
+            <Text style={styles.avltxt}>Available in stock</Text>
         </View>
         <View style={styles.sortcontainer}>
-          <Image
-            source={require('../assets/images/pencil.png')}
-            style={styles.sortimage}
-          />
-          <Text>Edit</Text>
+            <Image source={require('../assets/images/sort.png')} style={styles.sortimage}/>
+            <Text>Sort</Text>
         </View>
       </View>
-      <View style={styles.fltcontainer}>
-        <FlatList
-          data={product}
-          keyExtractor={item => item.id}
-          numColumns={2}
-          keyboardShouldPersistTaps="handled"
-          showsVerticalScrollIndicator={false}
-          renderItem={({item}) => (
-            <TouchableOpacity
-              onPress={() => {
-                navigation.navigate('ProductView');
-              }}>
-              <View style={styles.productCard}>
-                <ImageBackground
-                  source={item.image}
-                  style={styles.productImage}>
-                  <TouchableOpacity>
-                    <Image
-                      source={require('../assets/images/Heart.png')}
-                      style={[styles.heart]}
-                    />
-                  </TouchableOpacity>
-                </ImageBackground>
-              </View>
-              <View style={styles.des}>
-                <Text style={styles.productDes}>{item.des}</Text>
-                <Text style={styles.productPrice}>{item.price}</Text>
-              </View>
-            </TouchableOpacity>
-          )}
-          ListFooterComponent={<View style={{height: 50}} />}
-          contentContainerStyle={{ paddingBottom: height * 0.2 }}
-        />
-      </View>
+    <View style={styles.fltcontainer}>
+            <FlatList
+              data={product}
+              keyExtractor={item => item.id}
+              numColumns={2}
+              keyboardShouldPersistTaps="handled"
+              showsVerticalScrollIndicator={false}
+              renderItem={({item}) => (
+                <TouchableOpacity
+                  onPress={() => {
+                    navigation.navigate('ProductView');
+                  }}>
+                  <View style={styles.productCard}>
+                    <ImageBackground source={item.image} style={styles.productImage}>
+                      <TouchableOpacity onPress={() => toggleLike(item.id)}>
+                        <Image
+                          source={require('../assets/images/Heart.png')}
+                          style={[
+                            styles.heart,
+                            {tintColor: likedProducts.includes(item.id) ? 'red' : 'gray'},
+                          ]}
+                        />
+                      </TouchableOpacity>
+                    </ImageBackground>
+                  </View>
+                  <View style={styles.des}>
+                    <Text style={styles.productDes}>{item.des}</Text>
+                    <Text style={styles.productPrice}>{item.price}</Text>
+                  </View>
+                </TouchableOpacity>
+              )}
+              ListFooterComponent={<View style={{height: 50}} />}
+              contentContainerStyle={{ paddingBottom: height * 0.2 }}
+            />
+          </View>
     </SafeAreaView>
   );
 }
@@ -159,50 +168,45 @@ const styles = StyleSheet.create({
   },
   topcontainer: {
     width: '90%',
+    alignSelf: 'center',
+    marginTop: height * 0.05,
     flexDirection: 'row',
     justifyContent: 'space-between',
-    marginTop: height * 0.05,
-    alignSelf: 'center',
   },
-  backImage: {
-    width: width * 0.08,
-    height: width * 0.08,
-    resizeMode: 'contain',
-  },
-  headtxt: {
+  brandname: {
     fontSize: fontSize(17),
     fontWeight: '600',
     fontFamily: 'InterBold',
   },
-  available: {
-    flexDirection: 'row',
-    width: '90%',
-    alignSelf: 'center',
-    justifyContent: 'space-between',
+  available:{
+    flexDirection:'row',
+    width:'90%',
+    alignSelf:'center',
+    justifyContent:'space-between',
     marginTop: height * 0.04,
   },
-  sortcontainer: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    backgroundColor: '#F5F6FA',
+  sortcontainer:{
+    flexDirection:'row',
+    justifyContent:'space-between',
+    backgroundColor:'#F5F6FA',
     paddingHorizontal: width * 0.05,
     paddingVertical: height * 0.015,
-    borderRadius: 10,
+    borderRadius:10,
   },
-  sortimage: {
+  sortimage:{
     marginRight: width * 0.01,
     marginTop: height * 0.003,
   },
-  itmtxt: {
+  itmtxt:{
     fontSize: fontSize(17),
-    fontFamily: 'Inter',
+    fontFamily:'Inter',
     fontWeight: '500',
   },
-  avltxt: {
+  avltxt:{
     fontSize: fontSize(15),
-    fontFamily: 'Inter',
+    fontFamily:'Inter',
     fontWeight: '400',
-    opacity: 0.5,
+    opacity:0.5,
   },
   heart: {
     width: width * 0.07,
@@ -221,6 +225,7 @@ const styles = StyleSheet.create({
     width: width * 0.42,
     borderRadius: 20,
     marginLeft: width * 0.02,
+
   },
   productImage: {
     width: width * 0.4,
@@ -242,4 +247,11 @@ const styles = StyleSheet.create({
     width: '65%',
     marginLeft: width * 0.05,
   },
+  imgbtn:{
+    width: width * 0.08,
+    height: width * 0.08,
+    resizeMode: 'contain',
+  },
 });
+
+

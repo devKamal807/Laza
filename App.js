@@ -22,6 +22,7 @@ import AddAddress from './src/components/AddAddress';
 import CardScreen from './src/components/CardScreen';
 import NewCard from './src/components/NewCard';
 import OrderConfirm from './src/components/OrderConfirm';
+import BrandScreen from './src/components/BrandScreen';
 
 
 
@@ -50,6 +51,7 @@ export default function App() {
         <Stack.Screen name="CardScreen" component={CardScreen}/>
         <Stack.Screen name="NewCard" component={NewCard}/>
         <Stack.Screen name="OrderConfirm" component={OrderConfirm}/>
+        <Stack.Screen name="BrandScreen" component={BrandScreen}/>
       </Stack.Navigator>
     </NavigationContainer>
   );

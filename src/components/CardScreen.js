@@ -180,7 +180,7 @@ const styles = StyleSheet.create({
   },
   headContainer: {
     alignItems: 'center',
-    marginBottom: height * 0.02,
+    marginBottom: height * 0.05,
   },
   headTxt: {
     fontSize: fontSize(17),

@@ -83,6 +83,7 @@ export default function ScreenThree() {
 
   return (
     <SafeAreaView style={styles.container}>
+    <ScrollView>
       <View style={styles.backContainer}>
         <TouchableOpacity onPress={() => navigation.navigate('ScreenTwo')}>
           <Image source={require('../assets/images/Back.png')} style={styles.backImage} />
@@ -93,7 +94,7 @@ export default function ScreenThree() {
         <Text style={styles.headTxt}>Sign Up</Text>
       </View>
 
-      <ScrollView>
+      
         <View style={styles.inputContainer}>
           <Text style={styles.label}>Username</Text>
           <View style={styles.inputBox}>

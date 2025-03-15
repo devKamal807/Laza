@@ -15,7 +15,7 @@ import {
 } from 'react-native';
 import React, {useState} from 'react';
 import {useNavigation} from '@react-navigation/native';
-import ProductView from './ProductView';
+
 
 const brand = [
   {
@@ -112,8 +112,8 @@ export default function ScreenEight() {
   const toggleLike = id => {
     setLikedProducts(prevLiked =>
       prevLiked.includes(id)
-        ? prevLiked.filter(item => item !== id) 
-        : [...prevLiked, id] 
+        ? prevLiked.filter(item => item !== id)
+        : [...prevLiked, id]
     );
   };
   return (
@@ -182,12 +182,13 @@ export default function ScreenEight() {
           keyExtractor={item => item.id}
           keyboardShouldPersistTaps="handled"
           renderItem={({item}) => (
-            <Pressable>
+            <TouchableOpacity onPress={()=>{
+              navigation.navigate('BrandScreen',{name:item.name})}}>
               <View style={styles.brandcontainer}>
                 <Image source={item.image} style={styles.brandimage} />
                 <Text style={styles.brandname}>{item.name}</Text>
               </View>
-            </Pressable>
+            </TouchableOpacity>
           )}
           showsHorizontalScrollIndicator={false}
           ListFooterComponent={<View style={{height: 50}} />}
@@ -236,6 +237,7 @@ export default function ScreenEight() {
             </TouchableOpacity>
           )}
           ListFooterComponent={<View style={{height: 50}} />}
+          contentContainerStyle={{ paddingBottom: height * 0.4 }}
         />
       </View>
     </SafeAreaView>
@@ -261,8 +263,8 @@ const styles = StyleSheet.create({
     marginRight: width * 0.05,
   },
   imgbtn: {
-    width: width * 0.12,
-    height: width * 0.12,
+    width: width * 0.08,
+    height: width * 0.08,
     resizeMode: 'contain',
   },
   greetingContainer: {

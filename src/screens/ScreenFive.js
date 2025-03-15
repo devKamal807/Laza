@@ -52,6 +52,7 @@ export default function ScreenFive() {
 
   return (
     <SafeAreaView style={styles.container}>
+      <ScrollView>
       <View style={styles.backContainer}>
         <TouchableOpacity onPress={() => navigation.navigate('ScreenFour')}>
           <Image
@@ -70,7 +71,7 @@ export default function ScreenFive() {
           source={require('../assets/images/Forgot.png')}
         />
       </View>
-    <ScrollView>
+    
       <View style={styles.inputContainer}>
         <Text style={styles.label}>Email Address</Text>
 

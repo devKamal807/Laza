@@ -23,6 +23,8 @@ export default function NewCard() {
   const [cardnumber, setCardNumber] = useState('');
   const [exp, setExp] = useState('');
   const [cvv, setCvv] = useState('');
+  const [selectedCard, setSelectedCard] = useState(null);
+
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.backContainer}>
@@ -40,9 +42,30 @@ export default function NewCard() {
       </View>
 
       <View style={styles.imagecontainer}>
-        <Image source={require('../assets/cards/master.png')} />
-        <Image source={require('../assets/cards/paypal.png')} />
-        <Image source={require('../assets/cards/bank.png')} />
+        <TouchableOpacity
+          style={[
+            styles.imgbg,
+            selectedCard === 'master' && styles.selectedImgBg,
+          ]}
+          onPress={() => setSelectedCard('master')}>
+          <Image source={require('../assets/cards/master.png')} />
+        </TouchableOpacity>
+        <TouchableOpacity
+          style={[
+            styles.imgbg,
+            selectedCard === 'paypal' && styles.selectedImgBg,
+          ]}
+          onPress={() => setSelectedCard('paypal')}>
+          <Image source={require('../assets/cards/paypal.png')} />
+        </TouchableOpacity>
+        <TouchableOpacity
+          style={[
+            styles.imgbg,
+            selectedCard === 'bank' && styles.selectedImgBg,
+          ]}
+          onPress={() => setSelectedCard('bank')}>
+          <Image source={require('../assets/cards/bank.png')} />
+        </TouchableOpacity>
       </View>
 
       <View style={styles.carddtcontainer}>
@@ -121,7 +144,7 @@ const styles = StyleSheet.create({
   },
   headContainer: {
     alignItems: 'center',
-    marginBottom: height * 0.02,
+    marginBottom: height * 0.05,
   },
   headTxt: {
     fontSize: fontSize(17),
@@ -184,5 +207,16 @@ const styles = StyleSheet.create({
     fontWeight: '500',
     color: '#FFFFFF',
     marginVertical: height * 0.01,
+  },
+  imgbg: {
+    paddingHorizontal: width * 0.11,
+    paddingVertical: height * 0.020,
+    backgroundColor: '#F7F7FE',
+    borderRadius: 10,
+  },
+  selectedImgBg: {
+    backgroundColor: '#FFEEE3',
+    borderColor:'#FF5F00',
+    borderWidth:1,
   },
 });
