@@ -112,8 +112,8 @@ export default function ScreenEight() {
   const toggleLike = id => {
     setLikedProducts(prevLiked =>
       prevLiked.includes(id)
-        ? prevLiked.filter(item => item !== id) // Remove if already liked
-        : [...prevLiked, id] // Add if not liked
+        ? prevLiked.filter(item => item !== id) 
+        : [...prevLiked, id] 
     );
   };
   return (
@@ -128,7 +128,7 @@ export default function ScreenEight() {
           </Pressable>
         </View>
         <View style={styles.cartcontainer}>
-          <Pressable>
+          <Pressable onPress={()=>{navigation.navigate('Cart')}}>
             <Image
               source={require('../assets/images/Cart.png')}
               style={styles.imgbtn}
