@@ -67,20 +67,18 @@ export default function ReviewScreen() {
   const navigation = useNavigation();
   return (
     <SafeAreaView style={styles.container}>
-      <View style={styles.backContainer}>
-        <TouchableOpacity
-          onPress={() => navigation.goBack()}
-          accessible={true}
-          accessibilityLabel="Go back">
-          <Image
-            source={require('../assets/images/Back.png')}
-            style={styles.backImage}
-          />
-        </TouchableOpacity>
-      </View>
-
-      <View style={styles.headContainer}>
-        <Text style={styles.headTxt}>Reviews</Text>
+      <View style={styles.backcontainer}>
+        <View style={styles.backimgcontainer}>
+          <TouchableOpacity onPress={() => navigation.goBack()}>
+            <Image
+              source={require('../assets/images/Back.png')}
+              style={styles.backImage}
+            />
+          </TouchableOpacity>
+        </View>
+        <View style={styles.headContainer}>
+          <Text style={styles.headTxt}>Reviews</Text>
+        </View>
       </View>
 
       <View style={styles.topcontainer}>
@@ -94,7 +92,11 @@ export default function ReviewScreen() {
             />
           </View>
         </View>
-        <TouchableOpacity style={styles.btn} onPress={()=>{navigation.navigate('AddReview')}}>
+        <TouchableOpacity
+          style={styles.btn}
+          onPress={() => {
+            navigation.navigate('AddReview');
+          }}>
           <Image
             source={require('../assets/images/edit.png')}
             style={styles.icon}
@@ -146,20 +148,24 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#FFFFFF',
   },
-  backContainer: {
+  backcontainer:{
+    flexDirection:'row',
+    justifyContent:'space-between',
     marginTop: height * 0.05,
     marginLeft: width * 0.05,
+    marginBottom:height * 0.05,
   },
   backImage: {
     width: width * 0.08,
     height: width * 0.08,
     resizeMode: 'contain',
   },
-  headContainer: {
-    alignItems: 'center',
-    marginBottom: height * 0.05,
+  headContainer:{
+    marginRight:height * 0.19,
+    marginTop: height * 0.002,
+
   },
-  headTxt: {
+  headTxt:{
     fontSize: fontSize(17),
     fontWeight: '600',
     fontFamily: 'InterBold',
@@ -264,7 +270,7 @@ const styles = StyleSheet.create({
     marginTop: 0,
   },
   clockIcon: {
-    width: width * 0.030,
+    width: width * 0.03,
     height: height * 0.015,
     marginRight: width * 0.008,
   },
@@ -283,4 +289,3 @@ const styles = StyleSheet.create({
     textAlign: 'left',
   },
 });
-

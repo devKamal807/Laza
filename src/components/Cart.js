@@ -107,21 +107,19 @@ export default function Cart() {
 
   return (
     <SafeAreaView style={styles.container}>
-      <View style={styles.backContainer}>
-        <TouchableOpacity
-          onPress={() => navigation.goBack()}
-          accessible={true}
-          accessibilityLabel="Go back">
-          <Image
-            source={require('../assets/images/Back.png')}
-            style={styles.backImage}
-          />
-        </TouchableOpacity>
-      </View>
-
-      <View style={styles.headContainer}>
-        <Text style={styles.headTxt}>Cart</Text>
-      </View>
+      <View style={styles.backcontainer}>
+              <View style={styles.backimgcontainer}>
+                <TouchableOpacity onPress={() => navigation.goBack()}>
+                  <Image
+                    source={require('../assets/images/Back.png')}
+                    style={styles.backImage}
+                  />
+                </TouchableOpacity>
+              </View>
+              <View style={styles.headContainer}>
+                <Text style={styles.headTxt}>Cart</Text>
+              </View>
+            </View>
       <View>
         <FlatList
           data={cartItems}
@@ -233,20 +231,24 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#FFFFFF',
   },
-  backContainer: {
+  backcontainer:{
+    flexDirection:'row',
+    justifyContent:'space-between',
     marginTop: height * 0.05,
     marginLeft: width * 0.05,
+    marginBottom:height * 0.05,
   },
   backImage: {
     width: width * 0.08,
     height: width * 0.08,
     resizeMode: 'contain',
   },
-  headContainer: {
-    alignItems: 'center',
-    marginBottom: height * 0.05,
+  headContainer:{
+    marginRight:height * 0.21,
+    marginTop: height * 0.002,
+
   },
-  headTxt: {
+  headTxt:{
     fontSize: fontSize(17),
     fontWeight: '600',
     fontFamily: 'InterBold',

@@ -16,7 +16,6 @@ import {
 import React, {useState} from 'react';
 import {useNavigation} from '@react-navigation/native';
 
-
 const brand = [
   {
     id: '01',
@@ -113,9 +112,13 @@ export default function ScreenEight() {
     setLikedProducts(prevLiked =>
       prevLiked.includes(id)
         ? prevLiked.filter(item => item !== id)
-        : [...prevLiked, id]
+        : [...prevLiked, id],
     );
   };
+
+  const filteredProducts = product.filter(item =>
+    item.des.toLowerCase().includes(search.toLowerCase()),
+  );
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.btncontainer}>
@@ -128,7 +131,10 @@ export default function ScreenEight() {
           </Pressable>
         </View>
         <View style={styles.cartcontainer}>
-          <Pressable onPress={()=>{navigation.navigate('Cart')}}>
+          <Pressable
+            onPress={() => {
+              navigation.navigate('Cart');
+            }}>
             <Image
               source={require('../assets/images/Cart.png')}
               style={styles.imgbtn}
@@ -182,8 +188,10 @@ export default function ScreenEight() {
           keyExtractor={item => item.id}
           keyboardShouldPersistTaps="handled"
           renderItem={({item}) => (
-            <TouchableOpacity onPress={()=>{
-              navigation.navigate('BrandScreen',{name:item.name})}}>
+            <TouchableOpacity
+              onPress={() => {
+                navigation.navigate('BrandScreen', {name: item.name});
+              }}>
               <View style={styles.brandcontainer}>
                 <Image source={item.image} style={styles.brandimage} />
                 <Text style={styles.brandname}>{item.name}</Text>
@@ -207,7 +215,7 @@ export default function ScreenEight() {
       </View>
       <View style={styles.fltcontainer}>
         <FlatList
-          data={product}
+          data={filteredProducts}
           keyExtractor={item => item.id}
           numColumns={2}
           keyboardShouldPersistTaps="handled"
@@ -218,13 +226,19 @@ export default function ScreenEight() {
                 navigation.navigate('ProductView');
               }}>
               <View style={styles.productCard}>
-                <ImageBackground source={item.image} style={styles.productImage}>
+                <ImageBackground
+                  source={item.image}
+                  style={styles.productImage}>
                   <TouchableOpacity onPress={() => toggleLike(item.id)}>
                     <Image
                       source={require('../assets/images/Heart.png')}
                       style={[
                         styles.heart,
-                        {tintColor: likedProducts.includes(item.id) ? 'red' : 'gray'},
+                        {
+                          tintColor: likedProducts.includes(item.id)
+                            ? 'red'
+                            : 'gray',
+                        },
                       ]}
                     />
                   </TouchableOpacity>
@@ -237,7 +251,7 @@ export default function ScreenEight() {
             </TouchableOpacity>
           )}
           ListFooterComponent={<View style={{height: 50}} />}
-          contentContainerStyle={{ paddingBottom: height * 0.4 }}
+          contentContainerStyle={{paddingBottom: height * 0.4}}
         />
       </View>
     </SafeAreaView>
@@ -255,11 +269,7 @@ const styles = StyleSheet.create({
     marginLeft: width * 0.05,
     justifyContent: 'space-between',
   },
-  menucontainer: {
-    
-  },
   cartcontainer: {
-    
     marginRight: width * 0.05,
   },
   imgbtn: {
@@ -361,16 +371,20 @@ const styles = StyleSheet.create({
     fontWeight: '400',
     opacity: 0.6,
   },
+  fltcontainer: {
+    width: '90%',
+    alignSelf: 'center',
+    marginTop: height * 0.02,
+  },
   productCard: {
-    width: width * 0.42,
+    width: width * 0.2,
+    height: height * 0.2,
     borderRadius: 20,
-    marginLeft: width * 0.02,
-
   },
   productImage: {
-    width: width * 0.4,
-    height: height * 0.25,
-    borderRadius: 15,
+    width: width * 0.42,
+    height: height * 0.24,
+    borderRadius: 20,
     resizeMode: 'contain',
   },
   productDes: {
@@ -386,6 +400,7 @@ const styles = StyleSheet.create({
   des: {
     width: '65%',
     marginLeft: width * 0.05,
+    marginTop: height * 0.05,
   },
   brandcontainer: {
     flexDirection: 'row',
@@ -418,13 +433,5 @@ const styles = StyleSheet.create({
     position: 'absolute',
     top: height * 0.01,
     right: width * 0.03,
-  },
-  fltcontainer: {
-    
-    width: '90%',
-    alignSelf: 'center',
-    marginTop: height * 0.02,
-    
-  
   },
 });

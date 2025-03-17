@@ -30,20 +30,19 @@ export default function AddAddress() {
   return (
     <SafeAreaView style={styles.container}>
       <ScrollView>
-      <View style={styles.backContainer}>
-        <TouchableOpacity
-          onPress={() => navigation.goBack()}
-          accessibilityLabel="Go back">
-          <Image
-            source={require('../assets/images/Back.png')}
-            style={styles.backImage}
-          />
-        </TouchableOpacity>
-      </View>
-
-      <View style={styles.headContainer}>
-        <Text style={styles.headTxt}>Address</Text>
-      </View>
+      <View style={styles.backcontainer}>
+              <View style={styles.backimgcontainer}>
+                <TouchableOpacity onPress={() => navigation.goBack()}>
+                  <Image
+                    source={require('../assets/images/Back.png')}
+                    style={styles.backImage}
+                  />
+                </TouchableOpacity>
+              </View>
+              <View style={styles.headContainer}>
+                <Text style={styles.headTxt}>Address</Text>
+              </View>
+            </View>
 
       <View style={styles.nameContainer}>
         <Text style={styles.label}>Name</Text>
@@ -126,24 +125,28 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#FFFFFF',
-    paddingHorizontal: width * 0.05,
   },
-  backContainer: {
+  backcontainer:{
+    flexDirection:'row',
+    justifyContent:'space-between',
     marginTop: height * 0.05,
+    marginLeft: width * 0.05,
+    marginBottom:height * 0.05,
   },
   backImage: {
     width: width * 0.08,
     height: width * 0.08,
     resizeMode: 'contain',
   },
-  headContainer: {
-    alignItems: 'center',
-    marginBottom: height * 0.05,
+  headContainer:{
+    marginRight:height * 0.19,
+    marginTop: height * 0.002,
+
   },
-  headTxt: {
-    fontSize: fontSize(18),
-    fontWeight: '700',
-    color: '#1D1E20',
+  headTxt:{
+    fontSize: fontSize(17),
+    fontWeight: '600',
+    fontFamily: 'InterBold',
   },
   label: {
     fontSize: fontSize(17),
@@ -161,26 +164,34 @@ const styles = StyleSheet.create({
   },
   nameContainer: {
     marginBottom: height * 0.02,
+    width:'90%',
+    alignSelf:'center',
   },
   dualInputContainer: {
     flexDirection: 'row',
     justifyContent: 'space-between',
     marginBottom: height * 0.02,
+    width:'90%',
+    alignSelf:'center',
   },
   inputWrapper: {
     width: '48%',
   },
   phonecontainer: {
     marginBottom: height * 0.02,
+    width:'90%',
+    alignSelf:'center',
   },
   Addresscontainer: {
     marginBottom: height * 0.02,
+    width:'90%',
+    alignSelf:'center',
   },
   rememberContainer: {
     flexDirection: 'row',
     justifyContent: 'space-between',
-    alignItems: 'center',
-    // marginTop: height * 0.04,
+    width:'90%',
+    alignSelf:'center',
   },
   rememberText: {
     fontSize: fontSize(15),
