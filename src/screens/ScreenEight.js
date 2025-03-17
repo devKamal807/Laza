@@ -181,7 +181,7 @@ export default function ScreenEight() {
         </View>
       </View>
 
-      <View>
+      <View style={styles.bnd}>
         <FlatList
           horizontal
           data={brand}
@@ -380,6 +380,8 @@ const styles = StyleSheet.create({
     width: width * 0.2,
     height: height * 0.2,
     borderRadius: 20,
+    
+    
   },
   productImage: {
     width: width * 0.42,
@@ -390,7 +392,7 @@ const styles = StyleSheet.create({
   productDes: {
     fontSize: fontSize(11),
     fontWeight: '500',
-    fontFamily: 'Inter',
+    fontFamily: 'InterBold',
     textAlign: 'justify',
   },
   productPrice: {
@@ -398,9 +400,11 @@ const styles = StyleSheet.create({
     fontWeight: '600',
   },
   des: {
-    width: '65%',
+    width: '50%',
     marginLeft: width * 0.05,
     marginTop: height * 0.05,
+    
+  
   },
   brandcontainer: {
     flexDirection: 'row',
@@ -433,5 +437,9 @@ const styles = StyleSheet.create({
     position: 'absolute',
     top: height * 0.01,
     right: width * 0.03,
+  },
+  bnd:{
+  width:'90%',
+  alignSelf:'center',
   },
 });
