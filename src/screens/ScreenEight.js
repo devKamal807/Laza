@@ -123,7 +123,7 @@ export default function ScreenEight() {
     <SafeAreaView style={styles.container}>
       <View style={styles.btncontainer}>
         <View style={styles.menucontainer}>
-          <Pressable>
+          <Pressable onPress={() => navigation.openDrawer()}>
             <Image
               source={require('../assets/images/Menu.png')}
               style={styles.imgbtn}

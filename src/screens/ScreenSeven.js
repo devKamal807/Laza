@@ -44,7 +44,7 @@ export default function ScreenSeven() {
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.backContainer}>
-        <TouchableOpacity onPress={() => navigation.navigate('ScreenFive')}>
+        <TouchableOpacity onPress={() => navigation.goBack()}>
           <Image
             source={require('../assets/images/Back.png')}
             style={styles.backImage}
