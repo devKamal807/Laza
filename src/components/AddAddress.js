@@ -25,6 +25,7 @@ export default function AddAddress() {
   const [country, setCountry] = useState('Bangladesh');
   const [city, setCity] = useState('Sylhet');
   const [phone, setPhone] = useState('+880 1453-987533');
+  
   const [remember, setRemember] = useState(false);
 
   return (

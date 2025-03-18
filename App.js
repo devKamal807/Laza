@@ -42,7 +42,7 @@ import {
   TouchableOpacity,
   View,
 } from 'react-native';
-import {Card} from 'react-native-paper';
+
 import ScreenFive from './src/screens/ScreenFive';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import Settings from './src/components/Settings';
@@ -220,7 +220,7 @@ function MyDrawerNavigator() {
 
       <Drawer.Screen
         name="My Cards"
-        component={Card}
+        component={CardScreen}
         options={{
           drawerIcon: ({color}) => (
             <Icon name="card-outline" size={24} color={color} />
@@ -229,7 +229,7 @@ function MyDrawerNavigator() {
       />
 
       <Drawer.Screen
-        name="Wishlist"
+        name="WishList"
         component={WishList}
         options={{
           drawerIcon: ({color}) => (
