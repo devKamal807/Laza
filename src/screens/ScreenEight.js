@@ -6,7 +6,6 @@ import {
   PixelRatio,
   Pressable,
   SafeAreaView,
-  ScrollView,
   StyleSheet,
   Text,
   TextInput,
@@ -304,7 +303,6 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     paddingHorizontal: width * 0.05,
     paddingVertical: width * 0.02,
-
     flex: 1,
   },
   searchIcon: {
