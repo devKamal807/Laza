@@ -162,7 +162,7 @@ const styles = StyleSheet.create({
     backgroundColor:'#FFFFFF',
   },
   backContainer: {
-    marginTop: height * 0.05,
+    marginTop: height * 0.045,
     marginLeft: width * 0.05,
   },
   backImage: {

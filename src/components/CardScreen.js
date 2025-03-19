@@ -176,7 +176,7 @@ const styles = StyleSheet.create({
   backcontainer:{
     flexDirection:'row',
     justifyContent:'space-between',
-    marginTop: height * 0.05,
+    marginTop: height * 0.045,
     marginLeft: width * 0.05,
     marginBottom:height * 0.05,
   },
@@ -186,7 +186,7 @@ const styles = StyleSheet.create({
     resizeMode: 'contain',
   },
   headContainer:{
-    marginRight:height * 0.19,
+    marginRight:height * 0.18,
     marginTop: height * 0.002,
 
   },

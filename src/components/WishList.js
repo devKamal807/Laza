@@ -137,10 +137,11 @@ export default function WishList() {
                     />
                   </TouchableOpacity>
                 </ImageBackground>
-              </View>
-              <View style={styles.des}>
                 <Text style={styles.productDes}>{item.des}</Text>
                 <Text style={styles.productPrice}>{item.price}</Text>
+              </View>
+              <View style={styles.des}>
+                
               </View>
             </TouchableOpacity>
           )}
@@ -161,7 +162,7 @@ const styles = StyleSheet.create({
     width: '90%',
     flexDirection: 'row',
     justifyContent: 'space-between',
-    marginTop: height * 0.05,
+    marginTop: height * 0.045,
     alignSelf: 'center',
   },
   backImage: {
@@ -218,21 +219,24 @@ const styles = StyleSheet.create({
     marginTop: height * 0.02,
   },
   productCard: {
-    width: width * 0.42,
     borderRadius: 20,
-    marginLeft: width * 0.02,
+    width:'90%',
+    alignSelf:'center',
+    justifyContent:'space-between'
+
   },
   productImage: {
-    width: width * 0.4,
-    height: height * 0.25,
-    borderRadius: 15,
+    width: width * 0.42,
+    height: height * 0.24,
+    borderRadius: 20,
     resizeMode: 'contain',
+    alignSelf:'center',
   },
   productDes: {
     fontSize: fontSize(11),
     fontWeight: '500',
     fontFamily: 'Inter',
-    textAlign: 'justify',
+    textAlign: 'left',
   },
   productPrice: {
     fontSize: fontSize(13),

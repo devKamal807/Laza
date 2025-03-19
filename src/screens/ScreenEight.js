@@ -242,10 +242,11 @@ export default function ScreenEight() {
                     />
                   </TouchableOpacity>
                 </ImageBackground>
-              </View>
-              <View style={styles.des}>
                 <Text style={styles.productDes}>{item.des}</Text>
                 <Text style={styles.productPrice}>{item.price}</Text>
+              </View>
+              <View style={styles.des}>
+                
               </View>
             </TouchableOpacity>
           )}
@@ -264,7 +265,7 @@ const styles = StyleSheet.create({
   },
   btncontainer: {
     flexDirection: 'row',
-    marginTop: height * 0.05,
+    marginTop: height * 0.045,
     marginLeft: width * 0.05,
     justifyContent: 'space-between',
   },
@@ -373,11 +374,15 @@ const styles = StyleSheet.create({
     width: '90%',
     alignSelf: 'center',
     marginTop: height * 0.02,
+    
   },
   productCard: {
-    width: width * 0.2,
-    height: height * 0.2,
+    // width: width * 0.2,
+    // height: height * 0.2,
     borderRadius: 20,
+    width:'90%',
+    alignSelf:'center',
+    justifyContent:'space-between'
     
     
   },
@@ -386,12 +391,13 @@ const styles = StyleSheet.create({
     height: height * 0.24,
     borderRadius: 20,
     resizeMode: 'contain',
+    alignSelf:'center',
   },
   productDes: {
     fontSize: fontSize(11),
     fontWeight: '500',
     fontFamily: 'InterBold',
-    textAlign: 'justify',
+    textAlign: 'left',
   },
   productPrice: {
     fontSize: fontSize(13),
@@ -399,10 +405,9 @@ const styles = StyleSheet.create({
   },
   des: {
     width: '50%',
-    marginLeft: width * 0.05,
-    marginTop: height * 0.05,
-    
-  
+    // marginLeft: width * 0.05,
+    // marginTop: height * 0.05,
+
   },
   brandcontainer: {
     flexDirection: 'row',

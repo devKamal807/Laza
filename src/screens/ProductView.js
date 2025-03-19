@@ -203,7 +203,7 @@ const styles = StyleSheet.create({
   },
   backwraper: {
     flexDirection: 'row',
-    marginTop: height * 0.05,
+    marginTop: height * 0.045,
     marginHorizontal: width * 0.05,
     justifyContent: 'space-between',
   },
